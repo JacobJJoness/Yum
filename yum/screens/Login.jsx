@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
+import {useNavigation} from "@react-navigation/native";
 import { View, Text, TextInput, Image, TouchableOpacity, Animated } from 'react-native';
 
 function Login() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [fadeAnim] = useState(new Animated.Value(1));
+
+  const navigation = useNavigation();
+  const RegSubmit = () => {
+    // Perform API call here if needed
+
+    // Navigate to the Details screen
+    navigation.navigate('HomeScreen');
+  };
 
   const toggleForm = (formType) => {
     // Fade out the buttons
@@ -32,7 +41,7 @@ function Login() {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0f4f7' }}>
+    <View className = "flex-1 items-center justify-center bg-green-100" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0f4f7' }}>
       {/* */}
       <Animated.View
         style={{
@@ -49,7 +58,7 @@ function Login() {
           {/* */}
             <TouchableOpacity
               onPress={() => toggleForm('login')}
-              className = " items-center justify-center bg-green-400 w-1/2 h-16 p-1 mb-2 rounded-md "
+              className = " items-center justify-center bg-green-400 w-1/2 h-16 p-1 mb-2 rounded-md shadow-md "
             >
               <Text className=" text-white  text-2xl font-bold  ">Log In</Text>
             </TouchableOpacity>
@@ -57,7 +66,7 @@ function Login() {
             {/* */}
             <TouchableOpacity
               onPress={() => toggleForm('register')}
-              className = " items-center justify-center bg-green-400 w-1/2 h-16 p-1 mb-2 rounded-md "
+              className = " items-center justify-center bg-green-400 w-1/2 h-16 p-1 mb-2 rounded-md  shadow-md"
             >
               <Text className=" text-white  text-2xl font-bold  ">Register</Text>
             </TouchableOpacity>
@@ -71,12 +80,12 @@ function Login() {
                   <View className ='items-center mb-8'>
                     <Image source={require('../assets/Logo.png')} className ='w-32 h-24 mb-1' />
                   </View>
-                  <Text style={{ fontWeight: 'bold', color: '#3498db', marginBottom: 10 }}>Username</Text>
+                  <Text style={{ fontWeight: 'bold', color: '#17ec57', marginBottom: 10 }}>Username</Text>
                   <TextInput
                     style={{
                       width: '100%',
                       padding: 10,
-                      borderColor: '#3498db',
+                      borderColor: '#17ec57',
                       borderWidth: 1,
                       borderRadius: 5,
                     }}
@@ -84,12 +93,12 @@ function Login() {
                   />
                 </View>
                 <View style={{ marginTop: 10 }}>
-                  <Text style={{ fontWeight: 'bold', color: '#3498db', marginBottom: 10 }}>Password</Text>
+                  <Text style={{ fontWeight: 'bold', color: '#17ec57', marginBottom: 10 }}>Password</Text>
                   <TextInput
                     style={{
                       width: '100%',
                       padding: 10,
-                      borderColor: '#3498db',
+                      borderColor: '#17ec57',
                       borderWidth: 1,
                       borderRadius: 5,
                     }}
@@ -99,7 +108,7 @@ function Login() {
                 </View>
                 <TouchableOpacity
                   style={{
-                    backgroundColor: '#3498db',
+                    backgroundColor: '#17ec57',
                     paddingVertical: 15,
                     marginTop: 20,
                     borderRadius: 5,
@@ -112,6 +121,9 @@ function Login() {
             {showRegisterForm && (
               <>
                 <View>
+                  <View className ='items-center mb-8'>
+                    <Image source={require('../assets/Logo.png')} className ='w-32 h-24 mb-1' />
+                  </View>
                   <Text style={{ fontWeight: 'bold', color: '#2ecc71', marginBottom: 10 }}>Email</Text>
                   <TextInput
                     style={{
@@ -158,6 +170,7 @@ function Login() {
                     marginTop: 20,
                     borderRadius: 5,
                   }}
+                  onPress={() => RegSubmit({navigation})}
                 >
                   <Text style={{ color: '#fff', fontSize: 18, textAlign: 'center' }}>Register</Text>
                 </TouchableOpacity>
