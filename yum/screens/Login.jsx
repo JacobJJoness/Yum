@@ -41,7 +41,7 @@ function Login() {
   };
 
   return (
-    <View className = "flex-1 items-center justify-center bg-green-100" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0f4f7' }}>
+    <View className = "flex-1 items-center justify-center bg-green-100">
       {/* */}
       <Animated.View
         style={{
