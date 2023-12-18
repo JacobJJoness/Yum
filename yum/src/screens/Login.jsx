@@ -53,7 +53,7 @@ function Login() {
           <View style={{ alignItems: 'center' }}>
             {/* */}
             <View className ='items-center mb-8'>
-              <Image source={require('../assets/Logo.png')} className ='w-32 h-24 mb-1' />
+              <Image source={require('../../assets/Logo.png')} className ='w-32 h-24 mb-1' />
             </View>
           {/* */}
             <TouchableOpacity
@@ -78,7 +78,7 @@ function Login() {
               <>
                 <View>
                   <View className ='items-center mb-8'>
-                    <Image source={require('../assets/Logo.png')} className ='w-32 h-24 mb-1' />
+                    <Image source={require('../../assets/Logo.png')} className ='w-32 h-24 mb-1' />
                   </View>
                   <Text style={{ fontWeight: 'bold', color: '#17ec57', marginBottom: 10 }}>Username</Text>
                   <TextInput
@@ -122,7 +122,7 @@ function Login() {
               <>
                 <View>
                   <View className ='items-center mb-8'>
-                    <Image source={require('../assets/Logo.png')} className ='w-32 h-24 mb-1' />
+                    <Image source={require('../../assets/Logo.png')} className ='w-32 h-24 mb-1' />
                   </View>
                   <Text style={{ fontWeight: 'bold', color: '#2ecc71', marginBottom: 10 }}>Email</Text>
                   <TextInput
