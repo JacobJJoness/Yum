@@ -3,6 +3,12 @@ import { View, Text, TouchableOpacity } from 'react-native';
 //This file is for a Navbar at the top of the Home Screen. It contains a centered logo image, and a button in the top right 
 //corner for the following options manual entry of ingredients, the user's saved recipes, settings and a log out option(though we may want to hide this later)
 function BottomNav() {
+  {/* button onpress functions go here outside and before to the top*/}
+
+
+
+
+  
   return (
     <View className=" h-1/6 w-screen bg-green-700 ">
       <View className="flex flex-row  w-full h-full justify-center items-center">
