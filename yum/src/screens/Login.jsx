@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
-import {useNavigation} from "@react-navigation/native";
-import { View, Text, TextInput, Image, TouchableOpacity, Animated } from 'react-native';
-
+import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
+import LoginForm from '../Components/LoginForm';
+import RegisterForm from '../Components/RegisterForm';
 function Login() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [fadeAnim] = useState(new Animated.Value(1));
 
-  const navigation = useNavigation();
-  const RegSubmit = () => {
-    // Perform API call here if needed
-
-    // Navigate to the Details screen
-    navigation.navigate('HomeScreen');
-  };
+  
 
   const toggleForm = (formType) => {
     // Fade out the buttons
@@ -75,106 +69,10 @@ function Login() {
         ) : (
           <View style={{ backgroundColor: '#fff', padding: 20, borderRadius: 10 }}>
             {showLoginForm && (
-              <>
-                <View>
-                  <View className ='items-center mb-8'>
-                    <Image source={require('../../assets/Logo.png')} className ='w-32 h-24 mb-1' />
-                  </View>
-                  <Text style={{ fontWeight: 'bold', color: '#17ec57', marginBottom: 10 }}>Username</Text>
-                  <TextInput
-                    style={{
-                      width: '100%',
-                      padding: 10,
-                      borderColor: '#17ec57',
-                      borderWidth: 1,
-                      borderRadius: 5,
-                    }}
-                    placeholder="Enter your username"
-                  />
-                </View>
-                <View style={{ marginTop: 10 }}>
-                  <Text style={{ fontWeight: 'bold', color: '#17ec57', marginBottom: 10 }}>Password</Text>
-                  <TextInput
-                    style={{
-                      width: '100%',
-                      padding: 10,
-                      borderColor: '#17ec57',
-                      borderWidth: 1,
-                      borderRadius: 5,
-                    }}
-                    placeholder="Enter your password"
-                    secureTextEntry
-                  />
-                </View>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: '#17ec57',
-                    paddingVertical: 15,
-                    marginTop: 20,
-                    borderRadius: 5,
-                  }}
-                >
-                  <Text style={{ color: '#fff', fontSize: 18, textAlign: 'center' }}>Log In</Text>
-                </TouchableOpacity>
-              </>
+              <LoginForm/>
             )}
             {showRegisterForm && (
-              <>
-                <View>
-                  <View className ='items-center mb-8'>
-                    <Image source={require('../../assets/Logo.png')} className ='w-32 h-24 mb-1' />
-                  </View>
-                  <Text style={{ fontWeight: 'bold', color: '#2ecc71', marginBottom: 10 }}>Email</Text>
-                  <TextInput
-                    style={{
-                      width: '100%',
-                      padding: 10,
-                      borderColor: '#2ecc71',
-                      borderWidth: 1,
-                      borderRadius: 5,
-                    }}
-                    placeholder="Enter your email"
-                  />
-                </View>
-                <View style={{ marginTop: 10 }}>
-                  <Text style={{ fontWeight: 'bold', color: '#2ecc71', marginBottom: 10 }}>Phone Number</Text>
-                  <TextInput
-                    style={{
-                      width: '100%',
-                      padding: 10,
-                      borderColor: '#2ecc71',
-                      borderWidth: 1,
-                      borderRadius: 5,
-                    }}
-                    placeholder="Enter your phone number"
-                  />
-                </View>
-                <View style={{ marginTop: 10 }}>
-                  <Text style={{ fontWeight: 'bold', color: '#2ecc71', marginBottom: 10 }}>Password</Text>
-                  <TextInput
-                    style={{
-                      width: '100%',
-                      padding: 10,
-                      borderColor: '#2ecc71',
-                      borderWidth: 1,
-                      borderRadius: 5,
-                    }}
-                    placeholder="Enter your password"
-                    secureTextEntry
-                  />
-                </View>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: '#2ecc71',
-                    paddingVertical: 15,
-                    marginTop: 20,
-                    borderRadius: 5,
-                  }}
-                  onPress={() => RegSubmit({navigation})}
-                >
-                  <Text style={{ color: '#fff', fontSize: 18, textAlign: 'center' }}>Register</Text>
-                </TouchableOpacity>
-              </>
+              <RegisterForm/>
             )}
           </View>
         )}
