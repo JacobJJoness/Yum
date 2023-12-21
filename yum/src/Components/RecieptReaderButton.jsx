@@ -76,4 +76,17 @@ const RecieptReader = async () => {
   await worker.terminate();
 };
 
-export default RecieptReader;
+
+
+const RecieptReaderButton = () => {
+  return (
+    <TouchableOpacity
+      style={('bg-blue-500 p-4 rounded')}
+      onPress={RecieptReader()}
+    >
+      <Text style={('text-white font-bold')}>{'camera'}</Text>
+    </TouchableOpacity>
+  );
+};
+
+export default RecieptReaderButton;
