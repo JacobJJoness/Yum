@@ -33,53 +33,35 @@ export default function RegisterForm() {
   return (
     <>
         <KeyboardAvoidingView behavior ='padding'>
-            <View>
-                <View className ='items-center mb-8'>
-                    <Image source={require('../../assets/Logo.png')} className ='w-32 h-24 mb-1' />
-                </View>
-                
-                <TextInput
-                value = {email}
-                style={{
-                    width: '100%',
-                    padding: 10,
-                    borderColor: '#2ecc71',
-                    borderWidth: 1,
-                    borderRadius: 5,
-                }}
-                placeholder="Email"
-                
-                onChangeText={(text) => setEmail(text)}
-                />
+            <View className ='items-center mb-8'>
+                <Image source={require('../../assets/Logo.png')} className ='w-32 h-24 mb-1' />
             </View>
-            <View style={{ marginTop: 10 }}>
-                <TextInput
-                    style={{
-                        width: '100%',
-                        padding: 10,
-                        borderColor: '#2ecc71',
-                        borderWidth: 1,
-                        borderRadius: 5,
-                    }}
-                    placeholder="Password"
-                    secureTextEntry = {true}
-                    value = {password}
-                    onChangeText={(text) => setPassword(text)}
-                />
-            </View>
+            
+            <TextInput
+            value = {email}
+            className = "p-4 border-2 border-green-300 rounded-lg"
+            placeholder="Email"
+            
+            onChangeText={(text) => setEmail(text)}
+            />
+        
+          
+            <TextInput
+                className = "p-4 mt-5 border-2 border-green-300 rounded-lg"
+                placeholder="Password"
+                secureTextEntry = {true}
+                value = {password}
+                onChangeText={(text) => setPassword(text)}
+            />
+            
             { loading ? (
-                <ActivityIndicator size = "large" color="0000ff"/>
+                <ActivityIndicator size = "large" color="00ff00"/>
             ) : (
                 <TouchableOpacity
-                    style={{
-                    backgroundColor: '#2ecc71',
-                    paddingVertical: 15,
-                    marginTop: 20,
-                    borderRadius: 5,
-                    }}
+                    className = "bg-green-400 p-5 mt-8 rounded-lg items-center"
                     onPress={() => RegSubmit({navigation})}
                 >
-                    <Text style={{ color: '#fff', fontSize: 18, textAlign: 'center' }}>Register</Text>
+                    <Text className =" text-white font-bold items-center text-xl ">Register</Text>
                 </TouchableOpacity>
             )}
         </KeyboardAvoidingView>

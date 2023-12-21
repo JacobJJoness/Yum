@@ -67,7 +67,7 @@ function Login() {
 
           </View>
         ) : (
-          <View style={{ backgroundColor: '#fff', padding: 20, borderRadius: 10 }}>
+          <View className=' bg-white p-16 rounded-lg' >
             {showLoginForm && (
               <LoginForm/>
             )}

@@ -40,14 +40,7 @@ export default function LoginForm() {
                 </View>
 
                 <TextInput
-                    style={{
-                        width: '100%',
-                        padding: 10,
-                        borderColor: '#17ec57',
-                        borderWidth: 1,
-                        borderRadius: 5,
-                        marginBottom:20
-                    }}
+                    className = "p-4 border-2 border-green-300 rounded-lg"
                     placeholder="Email"
                     value={email}
                     autoCapitalize='none'
@@ -56,13 +49,7 @@ export default function LoginForm() {
         
             
                 <TextInput
-                    style={{
-                        width: '100%',
-                        padding: 10,
-                        borderColor: '#17ec57',
-                        borderWidth: 1,
-                        borderRadius: 5,
-                    }}
+                    className = "p-4 mt-5 border-2 border-green-300 rounded-lg"
                     placeholder="Password"
                     secureTextEntry={true}
                     value={password}
@@ -70,19 +57,13 @@ export default function LoginForm() {
                 />
             </View>
             { loading ? (
-                <ActivityIndicator size = "large" color="0000ff"/>
+                <ActivityIndicator size = "large" color="00ff00"/>
             ) : (
                 <TouchableOpacity
-                    style={{
-                    backgroundColor: '#17ec57',
-                    paddingVertical: 15,
-                    marginTop: 20,
-                    borderRadius: 5,
-                    
-                    }}
-                    onPress={() => LoginSubmit({navigation})}
+                className = "bg-green-400 p-5 mt-8 rounded-lg items-center"
+                onPress={() => LoginSubmit({navigation})}
                 >
-                    <Text style={{ color: '#fff', fontSize: 18, textAlign: 'center' }}>Log In</Text>
+                    <Text className=" text-white font-bold items-center text-xl ">Log In</Text>
                 </TouchableOpacity>
             )}
         </KeyboardAvoidingView>

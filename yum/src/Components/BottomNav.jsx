@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity,Image } from 'react-native';
 //This file is for a Navbar at the top of the Home Screen. It contains a centered logo image, and a button in the top right 
 //corner for the following options manual entry of ingredients, the user's saved recipes, settings and a log out option(though we may want to hide this later)
 function BottomNav() {
