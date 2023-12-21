@@ -27,8 +27,6 @@ export default function LoginForm() {
         } finally{
             setLoading(false);
         }
-  
-
         
   };
   return (
@@ -60,8 +58,8 @@ export default function LoginForm() {
                 <ActivityIndicator size = "large" color="00ff00"/>
             ) : (
                 <TouchableOpacity
-                className = "bg-green-400 p-5 mt-8 rounded-lg items-center"
-                onPress={() => LoginSubmit({navigation})}
+                    className = "bg-green-400 p-5 mt-8 rounded-lg items-center"
+                    onPress={() => LoginSubmit({navigation})}
                 >
                     <Text className=" text-white font-bold items-center text-xl ">Log In</Text>
                 </TouchableOpacity>

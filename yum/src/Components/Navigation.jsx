@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from '../screens/Login';
 import HomeScreen from '../screens/HomeScreen'; 
+import IngredientsList from '../screens/IngredientsList';
 const Stack = createStackNavigator();
 
 function Navigation() {
@@ -15,6 +16,7 @@ function Navigation() {
       >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="IngredientsList" component = {IngredientsList}/>
        
       </Stack.Navigator>
     </NavigationContainer>
