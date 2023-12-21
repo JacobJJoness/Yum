@@ -19,7 +19,8 @@ export default function LoginForm() {
         try{
             const response = await signInWithEmailAndPassword(auth,email,password)
             console.log(response);
-            alert('Check your emails!');
+            // Navigate to the Homescreen screen
+            navigation.navigate('HomeScreen');
         }catch(error) {
             console.log(error);
             alert('Login Failed: ' + error.message);
@@ -28,8 +29,7 @@ export default function LoginForm() {
         }
   
 
-        // Navigate to the Details screen
-        navigation.navigate('HomeScreen');
+        
   };
   return (
     <>

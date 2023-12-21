@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Animated, KeyboardAvoidingView } from 'react-native';
 import LoginForm from '../Components/LoginForm';
 import RegisterForm from '../Components/RegisterForm';
 function Login() {
@@ -35,7 +35,9 @@ function Login() {
   };
 
   return (
+  
     <View className = "flex-1 items-center justify-center bg-green-100">
+      
       {/* */}
       <Animated.View
         style={{

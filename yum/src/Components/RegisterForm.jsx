@@ -18,7 +18,8 @@ export default function RegisterForm() {
        try{
            const response = await createUserWithEmailAndPassword(auth,email,password)
            console.log(response);
-           alert('Check your emails!');
+           // Navigate to the Details screen
+            navigation.navigate('HomeScreen');
        }catch(error) {
            console.log(error);
            alert('Registeration Failed: ' + error.message);
@@ -27,8 +28,7 @@ export default function RegisterForm() {
        }
  
 
-       // Navigate to the Details screen
-       navigation.navigate('HomeScreen');
+       
  };
   return (
     <>
