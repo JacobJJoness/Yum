@@ -1,11 +1,10 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native';
-function TopNav() {
+import BackButton from './BackButton';
+function TopNav(props) {
   return (
-    <View className='bg-green-700 w-screen h-1/6'>
-        <TouchableOpacity>
-          <Text>Some</Text>
-        </TouchableOpacity>
+    <View className=' flex-1 bg-green-700 w-screen h-1/6'>
+        <BackButton previous={props.prevPage}/>
     </View>
   )
 }

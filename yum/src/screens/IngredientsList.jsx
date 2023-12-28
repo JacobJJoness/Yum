@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
-import Dropdown from 'react-native-element-dropdown';
+import {Dropdown } from 'react-native-element-dropdown';
+import TopNav from '../Components/TopNav';
 
 export default function IngredientsList() {
     // Mock data, replace with Firebase data
@@ -8,7 +9,7 @@ export default function IngredientsList() {
         fruits: ["Apple", "Banana", "Orange"],
         vegetables: ["Carrot", "Broccoli", "Spinach"],
         grains: ["Bread", "Rice", "Pasta"],
-        protein: ["Chicken", "Beef", "Tofu"],
+        proteins: ["Chicken", "Beef", "Tofu"],
         dairy: ["Milk", "Cheese", "Yogurt"]
     };
 
@@ -17,7 +18,7 @@ export default function IngredientsList() {
         fruits: null,
         vegetables: null,
         grains: null,
-        protein: null,
+        proteins: null,
         dairy: null
     });
 
@@ -27,24 +28,27 @@ export default function IngredientsList() {
     };
 
     return (
-      <View style={{ padding: 20 }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>Ingredients List</Text>
-          {Object.keys(foodGroups).map(group => (
-              <View key={group} style={{ marginBottom: 20 }}>
-                  <Text style={{ fontSize: 16, marginBottom: 5 }}>{group.charAt(0).toUpperCase() + group.slice(1)}</Text>
-                  <Dropdown
-                      data={foodGroups[group].map(item => ({ label: item, value: item }))}
-                      labelField="label"
-                      valueField="value"
-                      placeholder={`Select a ${group}`}
-                      value={selectedItems[group]}
-                      onChange={item => onValueChange(group, item.value)}
-                      style={{ borderWidth: 1, borderColor: 'gray', borderRadius: 4, padding: 10 }}
-                      maxHeight={300}
-                  />
-              </View>
-          ))}
-      </View>
+        <View className="flex-1 h-screen justify-center items-center bg-green-100 ">
+            <TopNav prevPage="HomeScreen"/>
+            <View className="h-5/6">
+                <Text className="font-bold text-xl mb-2 p-4">Ingredients List</Text>
+                {Object.keys(foodGroups).map(group => (
+                    <View key={group} className="mb-16 w-screen p-4">
+                        <Dropdown
+                            data={foodGroups[group].map(item => ({ label: item, value: item }))}
+                            labelField="label"
+                            valueField="value"
+                            placeholder={`Your ${group.charAt(0).toUpperCase() + group.slice(1)}`}
+                            value={selectedItems[group]}
+                            onChange={item => onValueChange(group, item.value)}
+                            
+                            className=" w-80 rounded-md  "
+                            maxHeight={300}
+                        />
+                    </View>
+                ))}
+            </View>
+        </View>
   );
 }
 
