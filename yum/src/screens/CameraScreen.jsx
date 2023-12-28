@@ -13,10 +13,15 @@ export default function CameraScreen() {
   const [imageUri, setImageUri] = useState(null);
   
   const RecieptReader = async () => {
-    const worker = await createWorker('eng');
-    const ret = await worker.recognize(CameraComponent.imageUri);
-    console.log(ret.data.text);
-    await worker.terminate();
+    try{
+      const worker = await createWorker('eng');
+      const ret = await worker.recognize(CameraComponent.imageUri);
+      console.log(ret.data.text);
+      await worker.terminate();
+    }catch(error){
+      console.log(error)
+      alert("Error caught: "+ error.message)
+    }{/* Maybe add a finally here */}
   };
 
   if (!permission) {
@@ -39,20 +44,27 @@ export default function CameraScreen() {
   }
 
   const takePicture = async () => {
-    if (permission.granted) {
-      let options = {
-        quality: 0.5,
-        base64: true,
-        exif: false
-      };
-      let photo = await cameraRef.current.takePictureAsync(options);
-      console.log("Picture stored");
-    }
+    try{
+      if (permission.granted) {
+        let options = {
+          quality: 0.5,
+          base64: true,
+          exif: false
+        };
+        let photo = await cameraRef.current.takePictureAsync(options);
+        console.log("Picture stored");
+      }
+    }catch(error){
+      console.log(error)
+      alert("Error caught: " + error.message)
+    }{/* Maybe add a finally here */}
+ 
+    
   };
 
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
+      <Camera style={styles.camera} type={type} ref={cameraRef}>
         <BackButton previous="HomeScreen"/>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
