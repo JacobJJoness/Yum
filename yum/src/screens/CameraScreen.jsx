@@ -1,7 +1,7 @@
 import { Camera, CameraType } from 'expo-camera';
 import { createWorker } from 'tesseract.js';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import BackButton from '../Components/BackButton';
 
 export default function CameraScreen() {
@@ -37,6 +37,18 @@ export default function CameraScreen() {
     setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
   }
 
+  takePicture = async () => {
+    if (this.camera) {
+      let options = {
+        quality: 0.5,
+        base64: true,
+        exif: false
+      };
+      let photo = await this.camera.takePictureAsync(options);
+      console.log(photo.uri);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Camera style={styles.camera} type={type}>
@@ -44,6 +56,9 @@ export default function CameraScreen() {
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
             <Text style={styles.text}>Flip Camera</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style = {styles.button} onPress={takePicture()}>
+            <Image require = "../../assets/LightGreyCircle.png"></Image>
           </TouchableOpacity>
         </View>
       </Camera>
