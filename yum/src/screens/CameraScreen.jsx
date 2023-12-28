@@ -1,10 +1,11 @@
-import { Camera, CameraType } from 'expo-camera';
+import { Camera, CameraType,takePictureAsync } from 'expo-camera';
 import { createWorker } from 'tesseract.js';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import BackButton from '../Components/BackButton';
 
 export default function CameraScreen() {
+  let cameraRef = useRef();
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   
@@ -37,15 +38,15 @@ export default function CameraScreen() {
     setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
   }
 
-  takePicture = async () => {
-    if (this.camera) {
+  const takePicture = async () => {
+    if (permission.granted) {
       let options = {
         quality: 0.5,
         base64: true,
         exif: false
       };
-      let photo = await this.camera.takePictureAsync(options);
-      console.log(photo.uri);
+      let photo = await cameraRef.current.takePictureAsync(options);
+      console.log("Picture stored");
     }
   };
 
@@ -57,8 +58,8 @@ export default function CameraScreen() {
           <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
             <Text style={styles.text}>Flip Camera</Text>
           </TouchableOpacity>
-          <TouchableOpacity style = {styles.button} onPress={takePicture()}>
-            <Image require = "../../assets/LightGreyCircle.png"></Image>
+          <TouchableOpacity style = {styles.button} onPress={takePicture}>
+            <Text className="bg-white">HELLO</Text>
           </TouchableOpacity>
         </View>
       </Camera>
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    alignSelf: 'flex-end',
+    
     alignItems: 'center',
   },
   text: {
